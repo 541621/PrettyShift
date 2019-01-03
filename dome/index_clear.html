@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+
+    body,html {
+      width: 100%;
+      height: 100%;
+    }
+    .btn {
+      position: absolute;
+      top: 40%;
+      right: 0;
+      width: 300px;
+      height: 150px;
+      line-height: 150px;
+      font-size: 50px;
+      color: #fff;
+      text-align: center;
+      background-color: #000;
+    }
+  </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<div class="btn">点击切换</div>
+</body>
+<script type="text/javascript" src="../src/canvasChange.js"></script>
+<script>
+  var canvas = document.querySelector('#canvas');
+  var ctx = canvas.getContext("2d");
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+  // var colorArr = ['#55c0f2','#76e4ec','#ffa599','#ffc787','#f1a9ff','#91c6ff','#a7a2ff','#ffc787','#76e4ec','#ffc787','#91c6ff','#ffc787','#95abff','#55c0f2','#ffa599'];
+
+
+
+  canvas.width = width;
+  canvas.height = height;
+  ctx.beginPath();
+  ctx.fillStyle= '#f1a9ff';
+  ctx.fillRect(0,0,width,height);
+  ctx.closePath();
+
+  var btn = document.querySelector('.btn');
+
+  btn.onclick = function () {
+    canvasChange(canvas, {
+      changeSpeed:15,//初速度
+      acceleration:-0.5,//加速度
+      acces:0,//阻力（用于影响改变加速度）
+      changemod:1,//变化模式(1-9)
+      changeColor1:'#f1a9ff',//开始颜色
+      changeColor2:'#ffc787',//想要变化的颜色
+      clear:true//是否开启清理模式（清除背景颜色，画布变透明）
+    }, function () {
+      console.log('over');
+    }, false);
+
+  }
+
+</script>
+</html>
