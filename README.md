@@ -1,4 +1,4 @@
-# canvasChange
+# PrettyShift
 一个简单的canvas过场效果集合
 
 ## 使用方法:
